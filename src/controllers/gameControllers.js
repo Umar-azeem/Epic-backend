@@ -1,10 +1,4 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteGame = exports.updateGame = exports.getGameById = exports.getGames = exports.createGame = void 0;
-const Game_js_1 = __importDefault(require("../models/Game.js"));
+import Game from "../models/Game.js";
 /* ===== Helper function for safe error messages ===== */
 const getErrorMessage = (error) => {
     if (error instanceof Error)
@@ -18,34 +12,32 @@ const getErrorMessage = (error) => {
     return "Unknown error occurred";
 };
 /* ================= CREATE ================= */
-const createGame = async (req, res) => {
+export const createGame = async (req, res) => {
     try {
         if (!req.body.title) {
             return res.status(400).json({ message: "Title is required" });
         }
-        const game = await Game_js_1.default.create(req.body);
+        const game = await Game.create(req.body);
         res.status(201).json(game);
     }
     catch (error) {
         res.status(400).json({ message: getErrorMessage(error) });
     }
 };
-exports.createGame = createGame;
 /* ================= GET ALL ================= */
-const getGames = async (req, res) => {
+export const getGames = async (req, res) => {
     try {
-        const games = await Game_js_1.default.find();
+        const games = await Game.find();
         res.json(games);
     }
     catch (error) {
         res.status(400).json({ message: getErrorMessage(error) });
     }
 };
-exports.getGames = getGames;
 /* ================= GET BY ID ================= */
-const getGameById = async (req, res) => {
+export const getGameById = async (req, res) => {
     try {
-        const game = await Game_js_1.default.findById(req.params.id);
+        const game = await Game.findById(req.params.id);
         if (!game) {
             return res.status(404).json({ message: "Game not found" });
         }
@@ -55,11 +47,10 @@ const getGameById = async (req, res) => {
         res.status(400).json({ message: getErrorMessage(error) });
     }
 };
-exports.getGameById = getGameById;
 /* ================= UPDATE ================= */
-const updateGame = async (req, res) => {
+export const updateGame = async (req, res) => {
     try {
-        const game = await Game_js_1.default.findByIdAndUpdate(req.params.id, req.body, {
+        const game = await Game.findByIdAndUpdate(req.params.id, req.body, {
             new: true,
             runValidators: true,
         });
@@ -72,12 +63,11 @@ const updateGame = async (req, res) => {
         res.status(400).json({ message: getErrorMessage(error) });
     }
 };
-exports.updateGame = updateGame;
 /* ================= DELETE ================= */
-const deleteGame = async (req, res) => {
+export const deleteGame = async (req, res) => {
     console.log("DELETE CONTROLLER HIT", req.params.id);
     try {
-        const game = await Game_js_1.default.findByIdAndDelete(req.params.id);
+        const game = await Game.findByIdAndDelete(req.params.id);
         if (!game) {
             return res.status(404).json({ message: "Game not found" });
         }
@@ -87,5 +77,3 @@ const deleteGame = async (req, res) => {
         res.status(400).json({ message: getErrorMessage(error) });
     }
 };
-exports.deleteGame = deleteGame;
-//# sourceMappingURL=gameControllers.js.map

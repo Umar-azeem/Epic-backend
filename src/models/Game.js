@@ -1,17 +1,12 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const mongoose_1 = __importDefault(require("mongoose"));
-const buttonSchema = new mongoose_1.default.Schema({
+import mongoose from "mongoose";
+const buttonSchema = new mongoose.Schema({
     enabled: Boolean,
     text: String,
     type: String,
     style: String,
     link: String
 }, { _id: false });
-const gameSchema = new mongoose_1.default.Schema({
+const gameSchema = new mongoose.Schema({
     title: String,
     description: String,
     label: String,
@@ -43,5 +38,4 @@ const gameSchema = new mongoose_1.default.Schema({
     trialAvailable: Boolean,
     button: buttonSchema
 }, { timestamps: true });
-exports.default = mongoose_1.default.model("Game", gameSchema);
-//# sourceMappingURL=Game.js.map
+export default mongoose.model("Game", gameSchema);
