@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "start": "tsx server.ts",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "build": "tsc && tsc-alias"
   },
   "dependencies": {
     "cloudinary": "^2.9.0",
