@@ -97,3 +97,65 @@ const gameSchema = new mongoose.Schema(
 );
 
 export default mongoose.model("Game", gameSchema);
+
+// {
+//   "title": "Cyber Warrior 2077",
+//   "slug": "cyber-warrior-2077",
+//   "description": "A futuristic open-world action RPG game.",
+//   "label": "New Release",
+//   "category": "Action",
+//   "saleOfTheWeek": "-30%",
+//   "tag": "Bestseller",
+//   "priceText": "$19.99",
+
+//   "image": "https://example.com/main.jpg",
+//   "coverImage": "https://example.com/cover.jpg",
+//   "screenshots": [
+//     "https://example.com/shot1.jpg",
+//     "https://example.com/shot2.jpg",
+//     "https://example.com/shot3.jpg"
+//   ],
+
+//   "price": 19.99,
+//   "originalPrice": 29.99,
+//   "currentPrice": 19.99,
+//   "discount": 30,
+
+//   "availableDate": "2026-04-10",
+//   "releaseDate": "2026-05-01",
+
+//   "sectionType": "A",
+//   "sectionKey": "featured_games",
+//   "priceType": "paid",
+//   "status": "active",
+
+//   "platforms": ["PC", "PS5", "Xbox"],
+//   "genres": ["Action", "RPG", "Adventure"],
+
+//   "rating": 4.5,
+
+//   "viewMore": true,
+//   "viewAll": false,
+//   "featured": true,
+//   "isFree": false,
+//   "totalAvailable": true,
+
+//   "button": {
+//     "text": "Buy Now",
+//     "link": "/buy/cyber-warrior-2077"
+//   },
+
+//   "sysMin": {
+//     "os": "Windows 10",
+//     "cpu": "Intel i5",
+//     "ram": "8GB",
+//     "gpu": "GTX 1050"
+//   },
+
+//   "sysRec": {
+//     "os": "Windows 11",
+//     "cpu": "Intel i7",
+//     "ram": "16GB",
+//     "gpu": "RTX 3060"
+//   }
+// }
