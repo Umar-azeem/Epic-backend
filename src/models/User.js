@@ -18,11 +18,53 @@ const userSchema = new mongoose.Schema(
       required: true,
     },
 
-    // 👑 ADD THIS (IMPORTANT FOR ADMIN SYSTEM)
+    // 👑 ADMIN ROLE
     role: {
       type: String,
       enum: ["user", "admin"],
       default: "user",
+    },
+
+    // ✅ WISHLIST FIELD (ADD THIS)
+    wishlist: {
+      type: [
+        {
+          gameId: {
+            type: String,
+            required: true,
+          },
+          gameData: {
+            type: Object,
+            default: {},
+          },
+          addedAt: {
+            type: Date,
+            default: Date.now,
+          },
+        },
+      ],
+      default: [],
+    },
+
+    // 🎮 PURCHASED GAMES (OPTIONAL - FOR FUTURE USE)
+    purchasedGames: {
+      type: [
+        {
+          gameId: {
+            type: String,
+            required: true,
+          },
+          purchasedAt: {
+            type: Date,
+            default: Date.now,
+          },
+          price: {
+            type: Number,
+            default: 0,
+          },
+        },
+      ],
+      default: [],
     },
   },
   { timestamps: true }
