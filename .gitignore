@@ -9,3 +9,5 @@ nodemon.json
 
 # Optional: npm lock file if you want to regenerate
 # package-lock.json
+.vercel
+.env*.local
