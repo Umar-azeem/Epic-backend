@@ -22,9 +22,10 @@ export const signup = async (req, res) => {
 
     // ✅ create token here also
     const token = jwt.sign(
-      { id: user._id,
+      {
+        id: user._id,
         role: user.role,
-       },
+      },
       process.env.JWT_SECRET,
       { expiresIn: "7d" }
     );
@@ -65,6 +66,15 @@ export const login = async (req, res) => {
       token,
       user,
     });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+export const getUser = async (req, res) => {
+  try {
+    const token = req.headers.authorization.split(' ')[1]
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    res.status(201).json({ user: decoded })
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
